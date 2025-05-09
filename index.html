@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>國字筆畫練習系統</title>
+  <style>
+    body {
+      background-color: #f7f7f7;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    #hanzi-container {
+      width: 300px;
+      height: 300px;
+      background-color: #ddd;
+      margin: 20px auto;
+      border: 2px solid #aaa;
+    }
+    #grade-select {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    #question {
+      font-size: 28px;
+      margin-top: 20px;
+    }
+    #message {
+      margin-top: 20px;
+      font-size: 20px;
+      color: red;
+    }
+    button {
+      font-size: 18px;
+      padding: 5px 15px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>國字筆畫順序練習</h1>
+
+  <label for="grade-select">選擇年級：</label>
+  <select id="grade-select">
+    <option value="1">一年級＿上學期</option>
+    <option value="2">一年級＿下學期</option>
+    <option value="3">二年級＿上學期</option>
+    <option value="4">二年級＿下學期</option>
+    <option value="5">三年級＿上學期</option>
+    <option value="6">三年級＿下學期</option>
+    <option value="7">四年級＿上學期</option>
+    <option value="8">四年級＿下學期</option>
+    <option value="9">五年級＿上學期</option>
+    <option value="10">五年級＿下學期</option>
+    <option value="11">六年級＿上學期</option>
+    <option value="12">六年級＿下學期</option>
+
+  </select>
+  <button onclick="loadRandomCharacter()">下一題</button>
+
+  <div id="question"></div>
+  <div id="hanzi-container"></div>
+  <div id="message"></div>
+
+  <script src="https://unpkg.com/hanzi-writer@2.0.2/dist/hanzi-writer.min.js"></script>
+  <script>
+    const hanziData = {
+      1: [
+    { word: "一", zhuyin: "ㄧ" },
+    { word: "二", zhuyin: "ㄦˋ" },
+    { word: "三", zhuyin: "ㄙㄢ" },
+    { word: "四", zhuyin: "ㄙˋ" },
+    { word: "五", zhuyin: "ㄨˇ" },
+    { word: "六", zhuyin: "ㄌㄧㄡˋ" },
+    { word: "七", zhuyin: "ㄑㄧ" },
+    { word: "八", zhuyin: "ㄅㄚ" },
+    { word: "九", zhuyin: "ㄐㄧㄡˇ" },
+    { word: "十", zhuyin: "ㄕˊ" },
+    { word: "日", zhuyin: "ㄖˋ" },
+    { word: "月", zhuyin: "ㄩㄝˋ" },
+    { word: "山", zhuyin: "ㄕㄢ" },
+    { word: "木", zhuyin: "ㄇㄨˋ" },
+    { word: "水", zhuyin: "ㄕㄨㄟˇ" },
+    { word: "人", zhuyin: "ㄖㄣˊ" },
+    { word: "手", zhuyin: "ㄕㄡˇ" },
+    { word: "門", zhuyin: "ㄇㄣˊ" },
+    { word: "小", zhuyin: "ㄒㄧㄠˇ" },
+    { word: "上", zhuyin: "ㄕㄤˋ" },
+    { word: "走", zhuyin: "ㄗㄡˇ" },
+    { word: "左", zhuyin: "ㄗㄨㄛˇ" },
+    { word: "右", zhuyin: "ㄧㄡˋ" },
+    { word: "向", zhuyin: "ㄒㄧㄤˋ" },
+    { word: "魚", zhuyin: "ㄩˊ" },
+    { word: "也", zhuyin: "ㄧㄝˇ" },
+    { word: "來", zhuyin: "ㄌㄞˊ" },
+    { word: "加", zhuyin: "ㄐㄧㄚ" },
+    { word: "船", zhuyin: "ㄔㄨㄢˊ" },
+    { word: "前", zhuyin: "ㄑㄧㄢˊ" },
+    { word: "油", zhuyin: "ㄧㄡˊ" },
+    { word: "開", zhuyin: "ㄎㄞ" },
+    { word: "出", zhuyin: "ㄔㄨ" },
+    { word: "招", zhuyin: "ㄓㄠ" },
+    { word: "車", zhuyin: "ㄔㄜ" },
+    { word: "子", zhuyin: "ㄗˇ" },
+    { word: "花", zhuyin: "ㄏㄨㄚ" },
+    { word: "地", zhuyin: "ㄉㄧˋ" },
+    { word: "在", zhuyin: "ㄗㄞˋ" },
+    { word: "笑", zhuyin: "ㄒㄧㄠˋ" },
+    { word: "印", zhuyin: "ㄧㄣˋ" },
+    { word: "張", zhuyin: "ㄓㄤ" },
+    { word: "臉", zhuyin: "ㄌㄧㄢˇ" },
+    { word: "泡", zhuyin: "ㄆㄠˋ" },
+    { word: "玩", zhuyin: "ㄨㄢˊ" },
+    { word: "大", zhuyin: "ㄉㄚˋ" },
+    { word: "起", zhuyin: "ㄑㄧˇ" },
+    { word: "好", zhuyin: "ㄏㄠˇ" },
+    { word: "多", zhuyin: "ㄉㄨㄛ" },
+    { word: "我", zhuyin: "ㄨㄛˇ" },
+    { word: "的", zhuyin: "ㄉㄜ˙" },
+    { word: "朵", zhuyin: "ㄉㄨㄛˇ" },
+    { word: "你", zhuyin: "ㄋㄧˇ" },
+    { word: "抱", zhuyin: "ㄅㄠˋ" },
+    { word: "吹", zhuyin: "ㄔㄨㄟ" },
+    { word: "像", zhuyin: "ㄒㄧㄤˋ" },
+    { word: "爸", zhuyin: "ㄅㄚˋ" },
+    { word: "到", zhuyin: "ㄉㄠˋ" },
+    { word: "青", zhuyin: "ㄑㄧㄥ" },
+    { word: "叫", zhuyin: "ㄐㄧㄠˋ" },
+    { word: "下", zhuyin: "ㄒㄧㄚˋ" },
+    { word: "那", zhuyin: "ㄋㄚˋ" },
+    { word: "和", zhuyin: "ㄏㄜˊ" },
+    { word: "要", zhuyin: "ㄧㄠˋ" },
+    { word: "他", zhuyin: "ㄊㄚ" },
+    { word: "朋", zhuyin: "ㄆㄥˊ" },
+    { word: "友", zhuyin: "ㄧㄡˇ" },
+    { word: "跟", zhuyin: "ㄍㄣ" },
+    { word: "頭", zhuyin: "ㄊㄡˊ" },
+    { word: "想", zhuyin: "ㄒㄧㄤˇ" },
+    { word: "做", zhuyin: "ㄗㄨㄛˋ" },
+    { word: "外", zhuyin: "ㄨㄞˋ" },
+    { word: "住", zhuyin: "ㄓㄨˋ" },
+    { word: "個", zhuyin: "ㄍㄜˋ" },
+    { word: "們", zhuyin: "ㄇㄣ˙" },
+    { word: "這", zhuyin: "ㄓㄜˋ" },
+    { word: "裡", zhuyin: "ㄌㄧˇ" },
+    { word: "有", zhuyin: "ㄧㄡˇ" },
+    { word: "沒", zhuyin: "ㄇㄟˊ" },
+    { word: "是", zhuyin: "ㄕˋ" },
+    { word: "什", zhuyin: "ㄕㄜˊ" },
+    { word: "麼", zhuyin: "˙ㄇㄜ" },
+    { word: "星", zhuyin: "ㄒㄧㄥ" },
+    { word: "哪", zhuyin: "ㄋㄚˇ" },
+    { word: "球", zhuyin: "ㄑㄧㄡˊ" },
+    { word: "家", zhuyin: "ㄐㄧㄚ" },
+    { word: "河", zhuyin: "ㄏㄜˊ" },
+    { word: "金", zhuyin: "ㄐㄧㄣ" },
+    { word: "說", zhuyin: "ㄕㄨㄛ" },
+    { word: "句", zhuyin: "ㄐㄩˋ" },
+    { word: "話", zhuyin: "ㄏㄨㄚˋ" },
+    { word: "兩", zhuyin: "ㄌㄧㄤˇ" },
+    { word: "都", zhuyin: "ㄉㄡ" },
+    { word: "悄", zhuyin: "ㄑㄧㄠˇ" },
+    { word: "尾", zhuyin: "ㄨㄟˇ" },
+    { word: "巴", zhuyin: "ㄅㄚ" },
+    { word: "滿", zhuyin: "ㄇㄢˇ" },
+    { word: "紅", zhuyin: "ㄏㄨㄥˊ" },
+    { word: "吐", zhuyin: "ㄊㄨˇ" },
+    { word: "缸", zhuyin: "ㄍㄤ" },
+    { word: "搖", zhuyin: "ㄧㄠˊ" },
+    { word: "春", zhuyin: "ㄔㄨㄣ" },
+    { word: "貼", zhuyin: "ㄊㄧㄝ" },
+    { word: "呢", zhuyin: "˙ㄋㄜ" },
+    { word: "了", zhuyin: "˙ㄌㄜ" },
+    { word: "請", zhuyin: "ㄑㄧㄥˇ" },
+    { word: "天", zhuyin: "ㄊㄧㄢ" },
+    { word: "家", zhuyin: "ㄐㄧㄚ" },
+    { word: "把", zhuyin: "ㄅㄚˇ" },
+    { word: "不", zhuyin: "ㄅㄨˋ" },
+    { word: "房", zhuyin: "ㄈㄤˊ" },
+    { word: "福", zhuyin: "ㄈㄨˊ" },
+    { word: "流", zhuyin: "ㄌㄧㄡˊ" },
+    { word: "幸", zhuyin: "ㄒㄧㄥˋ" }
+    
+      ],
+      2: [
+        
+      ],
+      // 可依需要擴充更多年級的字
+    };
+
+    let writer = null;
+
+    function loadRandomCharacter() {
+      const grade = document.getElementById('grade-select').value;
+      const chars = hanziData[grade];
+
+      if (!chars || chars.length === 0) {
+        alert("此年級尚未有字。");
+        return;
+      }
+
+      const randomChar = chars[Math.floor(Math.random() * chars.length)];
+      const { word, zhuyin } = randomChar;
+
+      document.getElementById('question').innerText = `請寫：「${word}」  注音：${zhuyin}`;
+      document.getElementById('message').innerText = '';
+
+      // 清除舊的 SVG
+      const container = document.getElementById('hanzi-container');
+      container.innerHTML = '';
+
+     // 建立新 Writer
+      writer = HanziWriter.create(container, word, {
+        width: 300,
+        height: 300,
+        padding: 10,
+        showOutline: true,
+        showCharacter: false,
+        strokeColor: '#000',
+        radicalColor: '#000',
+        drawingColor: '#00f',
+      });
+
+      writer.quiz({
+        onComplete: () => {
+          document.getElementById('message').innerText = '寫對了！好棒！';
+        },
+        onMistake: () => {
+        const msg = document.getElementById('message');
+        msg.innerText = '筆順錯了，請重新來過～';
+
+        // 加個短暫延遲後清除訊息，避免閃爍
+        setTimeout(() => {
+          msg.innerText = '';
+        }, 500);
+
+        writer.quiz(); // 重來
+        }
+      });
+    
+    // 語音朗讀國字
+      const utter = new SpeechSynthesisUtterance(word);
+      utter.lang = 'zh-TW'; // 繁體中文
+      utter.rate = 0.8; // 可調整語速
+      speechSynthesis.speak(utter);
+
+    
+    }
+
+    // 初始載入
+    loadRandomCharacter();
+  </script>
+</body>
+</html>
