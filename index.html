@@ -54,9 +54,12 @@
     <option value="10">五年級＿下學期</option>
     <option value="11">六年級＿上學期</option>
     <option value="12">六年級＿下學期</option>
-
   </select>
+
   <button onclick="loadRandomCharacter()">下一題</button>
+  <div id="counter">✔️ 今天寫對：0 次</div>
+  <button onclick="replayAudio()">🔊 重播語音</button>
+
 
   <div id="question"></div>
   <div id="hanzi-container"></div>
@@ -146,7 +149,7 @@
     { word: "有", zhuyin: "ㄧㄡˇ" },
     { word: "沒", zhuyin: "ㄇㄟˊ" },
     { word: "是", zhuyin: "ㄕˋ" },
-    { word: "什", zhuyin: "ㄕㄜˊ" },
+    { word: "什", zhuyin: "ㄕㄣˊ" },
     { word: "麼", zhuyin: "˙ㄇㄜ" },
     { word: "星", zhuyin: "ㄒㄧㄥ" },
     { word: "哪", zhuyin: "ㄋㄚˇ" },
@@ -185,70 +188,107 @@
       2: [
         
       ],
-      // 可依需要擴充更多年級的字
+      // 擴充更多年級的字
     };
 
-    let writer = null;
+let writer = null;
+  let currentWord = "";
+  let currentUtter = null;
 
-    function loadRandomCharacter() {
-      const grade = document.getElementById('grade-select').value;
-      const chars = hanziData[grade];
+  function initCounter() {
+    const today = new Date().toDateString();
+    const savedDate = localStorage.getItem('counterDate');
+    if (savedDate !== today) {
+      localStorage.setItem('correctCount', '0');
+      localStorage.setItem('counterDate', today);
+    }
+    updateCounterDisplay();
+  }
 
-      if (!chars || chars.length === 0) {
-        alert("此年級尚未有字。");
-        return;
-      }
+  function incrementCounter() {
+    let count = parseInt(localStorage.getItem('correctCount') || '0', 10);
+    count += 1;
+    localStorage.setItem('correctCount', count.toString());
+    updateCounterDisplay();
+  }
 
-      const randomChar = chars[Math.floor(Math.random() * chars.length)];
-      const { word, zhuyin } = randomChar;
+  function updateCounterDisplay() {
+    const count = localStorage.getItem('correctCount') || '0';
+    document.getElementById('counter').innerText = `✔️ 今天寫對：${count} 次`;
+  }
 
-      document.getElementById('question').innerText = `請寫：「${word}」  注音：${zhuyin}`;
-      document.getElementById('message').innerText = '';
+  function replayAudio() {
+    if (currentUtter) {
+      speechSynthesis.cancel();
+      speechSynthesis.speak(currentUtter);
+    }
+  }
 
-      // 清除舊的 SVG
-      const container = document.getElementById('hanzi-container');
-      container.innerHTML = '';
-
-     // 建立新 Writer
-      writer = HanziWriter.create(container, word, {
-        width: 300,
-        height: 300,
-        padding: 10,
-        showOutline: true,
-        showCharacter: false,
-        strokeColor: '#000',
-        radicalColor: '#000',
-        drawingColor: '#00f',
-      });
-
-      writer.quiz({
-        onComplete: () => {
-          document.getElementById('message').innerText = '寫對了！好棒！';
-        },
-        onMistake: () => {
+  function startQuiz() {
+    writer.quiz({
+      onComplete: () => {
+        document.getElementById('message').innerText = '寫對了！好棒！';
+        incrementCounter();
+      },
+      onMistake: () => {
         const msg = document.getElementById('message');
         msg.innerText = '筆順錯了，請重新來過～';
 
-        // 加個短暫延遲後清除訊息，避免閃爍
+        // 短暫清除錯誤提示
         setTimeout(() => {
           msg.innerText = '';
         }, 500);
 
-        writer.quiz(); // 重來
-        }
-      });
-    
-    // 語音朗讀國字
-      const utter = new SpeechSynthesisUtterance(word);
-      utter.lang = 'zh-TW'; // 繁體中文
-      utter.rate = 0.8; // 可調整語速
-      speechSynthesis.speak(utter);
+        startQuiz(); // 再次啟動 quiz，包含正確 onComplete
+      }
+    });
+  }
 
-    
+  function loadRandomCharacter() {
+    const grade = document.getElementById('grade-select').value;
+    const chars = hanziData[grade];
+
+    if (!chars || chars.length === 0) {
+      alert("此年級尚未有字。");
+      return;
     }
 
-    // 初始載入
+    const randomChar = chars[Math.floor(Math.random() * chars.length)];
+    const { word, zhuyin } = randomChar;
+    currentWord = word;
+
+    document.getElementById('question').innerText = `請寫：「${word}」  注音：${zhuyin}`;
+    document.getElementById('message').innerText = '';
+
+    const container = document.getElementById('hanzi-container');
+    container.innerHTML = ''; // 清除上一題 SVG
+
+    writer = HanziWriter.create(container, word, {
+      width: 300,
+      height: 300,
+      padding: 10,
+      showOutline: true,
+      showCharacter: false,
+      strokeColor: '#000',
+      radicalColor: '#000',
+      drawingColor: '#000'
+    });
+
+    startQuiz();
+
+    // 自動播放語音
+    currentUtter = new SpeechSynthesisUtterance(word);
+    currentUtter.lang = 'zh-TW';
+    currentUtter.rate = 0.8;
+    speechSynthesis.cancel();
+    speechSynthesis.speak(currentUtter);
+  }
+
+  // 頁面初始化
+  window.onload = () => {
+    initCounter();
     loadRandomCharacter();
-  </script>
+  };
+</script>
 </body>
 </html>
