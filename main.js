@@ -213,7 +213,7 @@ const hanziData = {
     { word: "但", zhuyin: "ㄉㄢˋ" },
     { word: "怎", zhuyin: "ㄗㄣˇ" },
     { word: "知", zhuyin: "ㄓˋ" },
-    { word: "道", zhuyin: "ㄉㄠˋ" }
+    { word: "道", zhuyin: "ㄉㄠˋ" },
     { word: "先", zhuyin: "ㄒㄧㄢ" },
     { word: "鄰", zhuyin: "ㄌㄧㄣˊ" },
     { word: "縮", zhuyin: "ㄙㄨㄛ" },
@@ -231,7 +231,7 @@ const hanziData = {
     { word: "啊", zhuyin: "ㄚ" },
     { word: "還", zhuyin: "ㄏㄞˊ" },
     { word: "漂", zhuyin: "ㄆㄧㄠˋ" },
-    { word: "亮", zhuyin: "ㄌ一ㄤˋ" }
+    { word: "亮", zhuyin: "ㄌ一ㄤˋ" },
     { word: "顆", zhuyin: "ㄎㄜ" },
     { word: "蛋", zhuyin: "ㄉㄢˋ" },
     { word: "糕", zhuyin: "ㄍㄠ" },
