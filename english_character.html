@@ -11,14 +11,22 @@
 <body>
 
   <div class="start-buttons" id="start-buttons">
-    <h1>選擇題數：</h1>
+    <h1>選擇題數：（英翻中）</h1>
     <button onclick="startGame(10)">10 題</button>
     <button onclick="startGame(20)">20 題</button>
     <button onclick="startGame(30)">30 題</button>
+
+    <hr style="margin: 30px auto; width: 60%; border: 1px solid #ccc;">
+
+    <h1>選擇題數：（中翻英）</h1>
+    <button onclick="startGame(10, 'zh-to-en')">10 題</button>
+    <button onclick="startGame(20, 'zh-to-en')">20 題</button>
+    <button onclick="startGame(30, 'zh-to-en')">30 題</button>
+
   </div>
 
   <div class="quiz-box" id="quiz-box" style="display: none;">
-    <h2 id="section-title">單字：（選正確的中文）</h2> <!-- ✅ 新增標題 -->
+    <h2 id="section-title">單字：（選正確的）</h2> 
     <div class="word" id="word">Loading...</div>
     <div id="options"></div>
     <button id="next-btn" onclick="nextQuestion()">下一題</button>

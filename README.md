@@ -1,5 +1,7 @@
 # 給小學生的輔助網站
-    目前能用：國字筆畫順序練習（南一版）
+    目前能用：
+    1. 國字筆畫順序練習（南一版國小課本）、
+    2. 英語單字複習（某補習班編的教材課本）
 
 ## 網址(url)：
     https://chiayunn.github.io/front_page.html
@@ -11,11 +13,24 @@
  （因為英文筆畫做起來太麻煩所以，棄。)
 
 
-## 建構單字複習ing...
-### 下下個做成語填空（next next...）
+## 單字複習v.0 over
+    進去選擇題數、中翻英或英翻中，然後開始練習嘍，四選一，
+    單字順序是南一補習班的（看小屁孩學到哪加到哪，當然還要我有空囉～），
+    英翻中會播放聲音，可以打開喇叭，應該不用加上重複播放吧（？
+    至於文法句子，一樣等我哪天無聊來做吧（？
+    對了上一頁會跳回首頁，回去要重來，所以慎點（？
 
-資料來源：
+### 下個做成語填空（next...）
+### 下下個做數學（？還是自然呢（？
 
-中研院,大腦語言實驗室,生字表字詞資料庫: https://ball.ling.sinica.edu.tw/brain/edu/radical.html
+要不要做個留言板...（但應該沒人，好麻煩，算了
 
-MIT, Hanzi Writer: https://hanziwriter.org
+## 資料來源：
+
+    中研院,大腦語言實驗室,生字表字詞資料庫: https://ball.ling.sinica.edu.tw/brain/edu/radical.html
+
+    MIT, Hanzi Writer: https://hanziwriter.org
+
+致謝：
+
+感謝GPT幫我整理國字跟單字嗚嗚嗚，讓我省了至少 O(n log n) 的時間（？

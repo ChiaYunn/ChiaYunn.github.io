@@ -15,7 +15,7 @@ const quizData = [
   { word: "grandfather", answer: "祖父" },
   { word: "uncle", answer: "叔叔 / 舅舅" },
   { word: "aunt", answer: "阿姨 / 姑姑" },
-  { word: "cousin", answer: "堂/表兄弟姊妹" },
+  { word: "cousin(s)", answer: "堂/表兄弟姊妹" },
   { word: "brother", answer: "兄弟" },
   { word: "sister", answer: "姊妹" },
   { word: "pen", answer: "筆" },
@@ -114,49 +114,58 @@ const quizData = [
     let selectedQuestions = [];
     let current = 0;
     let score = 0;
+    let currentMode = "en-to-zh"; // 預設為英翻中
 
     function shuffle(array) {
       return array.sort(() => Math.random() - 0.5);
     }
 
-    function startGame(numQuestions) {
-      // 隨機抽題，限制不超過資料長度
-      selectedQuestions = shuffle([...quizData]).slice(0, numQuestions);
-      current = 0;
-      score = 0;
-      document.getElementById("start-buttons").style.display = "none";
-      document.getElementById("quiz-box").style.display = "block";
-      showQuestion();
+    function startGame(count, mode = "en-to-zh") {
+    currentMode = mode;
+    current = 0;
+    score = 0;
+    selectedQuestions = shuffle(quizData).slice(0, count);
+    document.getElementById("start-buttons").style.display = "none";
+    document.getElementById("quiz-box").style.display = "block";
+    showQuestion();
     }
 
     function showQuestion() {
     const data = selectedQuestions[current];
-    const word = data.word;
+    const word = currentMode === "en-to-zh" ? data.word : data.answer;
+    const correct = currentMode === "en-to-zh" ? data.answer : data.word;
+
     document.getElementById("word").textContent = word;
 
-    // 自動播放語音（英文單字）
-    const utterance = new SpeechSynthesisUtterance(word);
-    utterance.lang = "en-US";
-    speechSynthesis.speak(utterance);
+    // 語音：只有在英翻中才唸英文
+    if (currentMode === "en-to-zh") {
+        const utterance = new SpeechSynthesisUtterance(data.word);
+        utterance.lang = "en-US";
+        speechSynthesis.speak(utterance);
+    }
 
     const optionsContainer = document.getElementById("options");
     optionsContainer.innerHTML = "";
 
-    const allChoices = quizData.map(q => q.answer).filter(ans => ans !== data.answer);
+    const allChoices = quizData.map(q =>
+        currentMode === "en-to-zh" ? q.answer : q.word
+    ).filter(ans => ans !== correct);
+
     const wrongChoices = shuffle(allChoices).slice(0, 3);
-    const finalChoices = shuffle([data.answer, ...wrongChoices]);
+    const finalChoices = shuffle([correct, ...wrongChoices]);
 
     finalChoices.forEach(choice => {
         const btn = document.createElement("div");
         btn.className = "option";
         btn.textContent = choice;
-        btn.onclick = () => checkAnswer(btn, choice, data.answer);
+        btn.onclick = () => checkAnswer(btn, choice, correct);
         optionsContainer.appendChild(btn);
     });
 
     document.getElementById("next-btn").style.display = "none";
-    document.getElementById("score-box").textContent = `第 ${current + 1} 題 / 共 ${selectedQuestions.length} 題`;
-}
+    document.getElementById("score-box").textContent = `第 ${current + 1} 題 / 共 ${selectedQuestions.length}題`;
+    }
+
 
 
     function checkAnswer(button, choice, correct) {
