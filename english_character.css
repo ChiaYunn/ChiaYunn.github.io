@@ -1,0 +1,88 @@
+body {
+    font-family: sans-serif;
+    background-color: #f0f8ff;
+    text-align: center;
+    padding: 30px;
+}
+.quiz-box {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: auto;
+    margin-top: 20px;
+}
+.word {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+.option {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #e6f0ff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.option:hover {
+    background-color: #d0e0ff;
+}
+.correct {
+    background-color: #c8f7c5 !important;
+}
+.wrong {
+    background-color: #f7c5c5 !important;
+}
+#next-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    display: none;
+}
+#score-box {
+    margin-top: 20px;
+    font-size: 18px;
+}
+.start-buttons button {
+    margin: 20px;
+    padding: 20px 40px;
+    font-size: 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: #3db4e3;
+    color: white;
+    cursor: pointer;
+}
+.start-buttons button:hover {
+    background-color: #3367d6;
+}
+.section-title {
+font-size: 24px;
+margin-bottom: 10px;
+color: #444;
+border-bottom: 2px solid #ccc;
+padding-bottom: 5px;
+}
+
+#footer-bar {
+  text-align: center;
+  margin-top: 200px;
+  padding: 20px 0;
+}
+
+
+#back-button {
+  padding: 20px 40px;
+  font-size: 20px;
+  background-color: #4c8bf5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#back-button:hover {
+  background-color: #3367d6;
+}
