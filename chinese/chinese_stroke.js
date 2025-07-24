@@ -2467,3 +2467,7 @@ const hanziData = {
     initCounter();
     loadRandomCharacter();
   };
+
+  function goBack() {
+    window.location.href = "https://ChiaYunn.github.io/front_page.html";
+}
