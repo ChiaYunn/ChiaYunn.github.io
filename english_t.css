@@ -1,0 +1,72 @@
+body {
+    font-family: "Arial", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: #f5f5f5;
+}
+.card {
+    width: 300px;
+    height: 200px;
+    background: white;
+    border-radius: 44px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    user-select: none;
+    text-align: center;
+    padding: 20px;
+}
+.card:hover {
+    transform: scale(1.03);
+}
+button {
+    margin-top: 20px;
+    padding: 20px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    background-color: #27a397;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+button:hover {
+    background-color: #27a397;
+}
+#flashcard {
+    font-size: 2em;
+    border: 2px solid #333;
+    padding: 50px;
+    width: 300px;
+    margin: 0 auto 20px;
+    cursor: pointer;
+    user-select: none;
+}
+#footer-bar {
+  text-align: center;
+  margin-top: 200px;
+  padding: 20px 0;
+}
+
+
+#back-button {
+  padding: 20px 40px;
+  font-size: 20px;
+  background-color: #4c8bf5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#back-button:hover {
+  background-color: #3367d6;
+}
