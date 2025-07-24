@@ -11,8 +11,8 @@ const quizData = [
   { word: "me", answer: "我" },
   { word: "mother", answer: "媽媽" },
   { word: "father", answer: "爸爸" },
-  { word: "grandmother", answer: "祖母" },
-  { word: "grandfather", answer: "祖父" },
+  { word: "grandmother", answer: "外婆 / 祖母" },
+  { word: "grandfather", answer: "外公 / 祖父" },
   { word: "uncle", answer: "叔叔 / 舅舅" },
   { word: "aunt", answer: "阿姨 / 姑姑" },
   { word: "cousin(s)", answer: "堂/表兄弟姊妹" },
@@ -67,7 +67,7 @@ const quizData = [
   { word: "tired", answer: "累的" },
   { word: "zero", answer: "零" },
   { word: "dress", answer: "洋裝" },
-  { word: "T-shirt", answer: "T 恤" },
+  { word: "T-shirt", answer: "T恤" },
   { word: "skirt", answer: "裙子" },
   { word: "coat", answer: "大衣" },
   { word: "jacket", answer: "外套" },
@@ -194,8 +194,8 @@ const quizData = [
     function showScore() {
       document.getElementById("quiz-box").innerHTML = `
         <h2>測驗完成！</h2>
-        <p>你的得分是：${score} / ${selectedQuestions.length}</p>
-        <button onclick="location.reload()">再玩一次</button>
+        <h3>你的得分是：${score} / ${selectedQuestions.length}</p>
+        <button class="restart-button" onclick="location.reload()">再玩一次？</button>
       `;
     }
 
