@@ -106,7 +106,15 @@ const quizData = [
   { word: "ball", answer: "球" },
   { word: "doll", answer: "洋娃娃" },
   { word: "robot", answer: "機器人" },
-  { word: "teddy bear", answer: "泰迪熊" }
+  { word: "teddy bear", answer: "泰迪熊" },
+  { word: "papaya(s)", answer: "木瓜" },
+  { word: "guava(s)", answer: "芭樂" },
+  { word: "pear(s)", answer: "西洋梨" },
+  { word: "banana(s)", answer: "香蕉" },
+  { word: "watermelon(s)", answer: "西瓜" },
+  { word: "melon(s)", answer: "哈蜜瓜" },
+  { word: "lemon(s)", answer: "檸檬" },
+  { word: "grape(s)", answer: "葡萄" }
 
 ];
 
