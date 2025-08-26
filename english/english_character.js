@@ -114,8 +114,15 @@ const quizData = [
   { word: "watermelon(s)", answer: "西瓜" },
   { word: "melon(s)", answer: "哈蜜瓜" },
   { word: "lemon(s)", answer: "檸檬" },
-  { word: "grape(s)", answer: "葡萄" }
-
+  { word: "grape(s)", answer: "葡萄" },
+  { word: "orange(s)", answer: "柳丁" },
+  { word: "chreey(ies)", answer: "櫻桃" },
+  { word: "peach(es)", answer: "水蜜桃" },
+  { word: "coconut(s)", answer: "椰子" },
+  { word: "straberry(ies)", answer: "草莓" },
+  { word: "tomato(es)", answer: "番茄" },
+  { word: "kiwi(s)", answer: "奇異果" },
+  { word: "mango(es)", answer: "芒果" },
 ];
 
 
