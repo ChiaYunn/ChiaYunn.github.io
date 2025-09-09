@@ -1,0 +1,69 @@
+body {
+margin: 0;
+height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center; /* 主要讓 SVG 垂直置中 */
+background: #f0f0f0;
+position: relative;
+}
+
+h1 {
+position: absolute;
+top: 20px;       /* 距離頁面頂部 20px */
+left: 50%;
+transform: translateX(-50%);
+margin: 0;
+font-size: 2em;
+text-align: center;
+}
+
+svg {
+width: 700px;
+height: 700px;
+}
+
+path {
+fill: #6f9c76;
+stroke: #ffffff;
+stroke-width: 0.5;
+transition: transform 0.3s, fill 0.3s;
+transform-origin: center center;
+cursor: pointer;
+}
+
+path:hover {
+fill: #ffcc66;
+}
+
+#info-box {
+  position: absolute;
+  top: 50px;   /* 調整距離頁面上方 */
+  left: 50px;  /* 調整距離頁面左側 */
+  font-size: 48px; /* 變大字體 */
+  font-weight: bold;
+  color: #242323; /* 改成你想要的顏色 */
+  background: rgba(255,255,255,0.8); /* 半透明背景，可選 */
+  padding: 10px;
+  border-radius: 8px;
+  z-index: 1000;
+}
+
+
+#image-box {
+  position: absolute;
+  top: 50px;
+  right: 20px; /* 固定在右邊 */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* 圖片間距 */
+}
+
+#image-box img {
+  width: 400px;
+  height: auto;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
