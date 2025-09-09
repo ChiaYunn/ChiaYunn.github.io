@@ -3,31 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>英文單字測驗</title>
- 
   <script src="english_character.js" defer></script>
   <link rel="stylesheet" href="english_character.css">
 
 </head>
 <body>
-    <h1>英文單字複習</h1>
-    <hr style="margin: 30px auto; width: 100%; border: 1px solid #180937;">
+  <h1>英文單字複習</h1>
+  <hr style="margin: 30px auto; width: 100%; border: 2px solid #301566;">
 
-  <div class="start-buttons" id="start-buttons">
-    <h2>選擇題數：（英翻中）</h2>
-    <button onclick="startGame(10)">10 題</button>
-    <button onclick="startGame(20)">20 題</button>
-    <button onclick="startGame(30)">30 題</button>
-
-    <hr style="margin: 30px auto; width: 80%; border: 1px solid #180937;">
-
-    <h2>選擇題數：（中翻英）</h2>
-    <button onclick="startGame(10, 'zh-to-en')">10 題</button>
-    <button onclick="startGame(20, 'zh-to-en')">20 題</button>
-    <button onclick="startGame(30, 'zh-to-en')">30 題</button>
-
+  <!-- Step 1: 選角色 -->
+  <div id="role-select">
+    <h1>Who are you?</h1>
+    <div class="role-container">
+      <div class="role-card" onclick="selectRole(this, 'ray')">
+        <img src="img/ray.png" alt="Ray">
+        <span>Ray</span>
+      </div>
+      <div class="role-card" onclick="selectRole(this, 'elsa')">
+        <img src="img/elsa.png" alt="Elsa">
+        <span>Elsa</span>
+      </div>
+    </div>
   </div>
 
-  <div class="quiz-box" id="quiz-box" style="display: none;">
+  <!-- Step 2: 選題數 & 模式 -->
+  <div class="start-buttons hidden" id="start-buttons">
+    <h2>英翻中練習 30 題</h2>
+    <button onclick="startGame(30, 'en-to-zh')">Start</button>
+
+    <hr style="margin: 30px auto; width: 80%; border: 1px solid #000000;">
+
+    <h2>中翻英練習 30 題</h2>
+    <button onclick="startGame(30, 'zh-to-en')">Start</button>
+  </div>
+
+  <!-- Step 3: 測驗區 -->
+  <div class="quiz-box hidden" id="quiz-box">
     <h2 id="section-title">單字：（選正確的）</h2> 
     <div class="word" id="word">Loading...</div>
     <div id="options"></div>
@@ -35,11 +46,20 @@
     <div id="score-box"></div>
   </div>
 
-
   <div id="footer-bar">
     <button id="back-button" onclick="goBack()">回首頁</button>
   </div>
 
+  <script>
+    function selectRole(element, role) {
+      // 加上點擊動畫
+      element.classList.add("clicked");
 
+      // 0.6秒後進入下一步
+      setTimeout(() => {
+        chooseRole(role);
+      }, 600);
+    }
+  </script>
 </body>
 </html>
