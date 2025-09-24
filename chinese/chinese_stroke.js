@@ -2339,7 +2339,7 @@ const hanziData = {
   let currentUtter = null;
   let mistakeCount = 0;
 
-  // 初始化計數器
+  // Initialize counter
   function initCounter() {
     const today = new Date().toDateString();
     const savedDate = localStorage.getItem('counterDate');
@@ -2350,7 +2350,7 @@ const hanziData = {
     updateCounterDisplay();
   }
 
-  // 增加計數
+  // increase count
   function incrementCounter() {
     let count = parseInt(localStorage.getItem('correctCount') || '0', 10);
     count += 1;
@@ -2358,13 +2358,13 @@ const hanziData = {
     updateCounterDisplay();
   }
 
-  // 更新顯示的計數
+  // Update count
   function updateCounterDisplay() {
     const count = localStorage.getItem('correctCount') || '0';
     document.getElementById('counter').innerText = `✔️ 今天寫對：${count} 次`;
   }
 
-  // 重播語音
+  // Replay voice
   function replayAudio() {
     if (currentUtter) {
       speechSynthesis.cancel();
@@ -2372,9 +2372,9 @@ const hanziData = {
     }
   }
 
-  // 開始筆畫測驗
+  // start quiz
   function startQuiz() {
-    mistakeCount = 0; // 每次新題目時重設
+    mistakeCount = 0; // Reset for each new question
 
     writer.quiz({
       onMistake: () => {
@@ -2387,7 +2387,7 @@ const hanziData = {
           msg.innerText = '錯三次了，重新開始寫這個字！';
           mistakeCount = 0;
 
-          // 清除舊的繪製狀態並重建
+          // Clear the old drawing state and rebuild
           const container = document.getElementById('hanzi-container');
           container.innerHTML = '';
           writer = HanziWriter.create(container, currentWord, {
@@ -2401,12 +2401,12 @@ const hanziData = {
             drawingColor: '#000'
           });
 
-          startQuiz(); // 重新開始 quiz
+          startQuiz(); // restart quiz
         } else {
           msg.innerText = '筆順錯了，請再試一次～';
         }
 
-        // 自動清除錯誤訊息（不清除第 2 次提示）
+        // Automatically clear error messages (doesn't clear the second prompt)
         if (mistakeCount !== 2) {
           setTimeout(() => {
             msg.innerText = '';
@@ -2421,7 +2421,7 @@ const hanziData = {
     });
   }
 
-  // 載入隨機字元
+  // Load random characters
   function loadRandomCharacter() {
     const grade = document.getElementById('grade-select').value;
     const chars = hanziData[grade];
@@ -2439,7 +2439,7 @@ const hanziData = {
     document.getElementById('message').innerText = '';
 
     const container = document.getElementById('hanzi-container');
-    container.innerHTML = ''; // 清除上一題的字形
+    container.innerHTML = ''; // Clear the font of the previous question
 
     writer = HanziWriter.create(container, word, {
       width: 300,
@@ -2452,9 +2452,9 @@ const hanziData = {
       drawingColor: '#000'
     });
 
-    startQuiz(); // 開始新的測驗
+    startQuiz(); // start new quiz
 
-    // 自動播放語音
+    // Automatically play voice
     currentUtter = new SpeechSynthesisUtterance(word);
     currentUtter.lang = 'zh-TW';
     currentUtter.rate = 0.8;
@@ -2462,7 +2462,7 @@ const hanziData = {
     speechSynthesis.speak(currentUtter);
   }
 
-  // 頁面初始化
+  // Page initialization
   window.onload = () => {
     initCounter();
     loadRandomCharacter();

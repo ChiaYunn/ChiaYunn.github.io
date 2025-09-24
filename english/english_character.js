@@ -141,7 +141,7 @@ const quizData = [
 let selectedQuestions = [];
 let current = 0;
 let score = 0;
-let currentMode = "en-to-zh"; // 預設為英翻中
+let currentMode = "en-to-zh"; // Default is English to Chinese
 
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
@@ -164,7 +164,7 @@ const correct = currentMode === "en-to-zh" ? data.answer : data.word;
 
 document.getElementById("word").textContent = word;
 
-// 語音：只有在英翻中才唸英文
+// Pronunciation: English is only pronounced in the English translation
 if (currentMode === "en-to-zh") {
     const utterance = new SpeechSynthesisUtterance(data.word);
     utterance.lang = "en-US";
@@ -192,8 +192,6 @@ finalChoices.forEach(choice => {
 document.getElementById("next-btn").style.display = "none";
 document.getElementById("score-box").textContent = `第 ${current + 1} 題 / 共 ${selectedQuestions.length}題`;
 }
-
-
 
 function checkAnswer(button, choice, correct) {
   const options = document.querySelectorAll(".option");

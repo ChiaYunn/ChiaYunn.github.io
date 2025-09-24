@@ -115,7 +115,6 @@ const words = [
 { "en": "partition", "zh": "隔間,區分" },
 { "en": "junk", "zh": "垃圾" },
 { "en": "punk", "zh": "朋克" },
-
 { "en": "menopause", "zh": "更年期" },
 { "en": "razor", "zh": "剃刀" },
 { "en": "crop strains", "zh": "作物品種" },
@@ -1291,8 +1290,8 @@ flashcard.addEventListener("click", () => {
 function speakWord(text) {
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = "en-US";
-  utterance.rate = 0.9; // 語速調整（0.1 ~ 10）
-  speechSynthesis.cancel(); // 先停止前一個朗讀
+  utterance.rate = 0.9; // Speech speed adjustment (0.1 ~ 10)
+  speechSynthesis.cancel(); // Stop the previous reading first
   speechSynthesis.speak(utterance);
 }
 
@@ -1301,7 +1300,7 @@ function replay() {
     }
 
 
-// 初始顯示第一張
+// Initial display of the first
 nextCard();
 
 function goBack() {

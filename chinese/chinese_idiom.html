@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>成語學習</title>
+<body>
+  <h1>成語學習與測驗</h1>
+  <hr style="margin: 30px auto; width: 100%; border: 2px solid #0d4e66;">
+
+  <!-- mode choice -->
+  <div id="mode-select">
+    <h2>選擇學習或測驗～</h2>
+    <button onclick="startMode('learn')">學習（Learn）</button>
+    <button onclick="startMode('quiz')">測驗（Quiz）</button>
+  </div>
+
+ <!-- learn mode -->
+ <div class="card hidden" id="learn-mode">
+   <div id="idiom"></div>
+   <h2>解釋：</h2>
+   <p style="font-size: 1.5em;"><span id="meaning"></span></p>
+   <h2>例子：</h2>
+   <p style="font-size: 1.5em;"><span id="example"></span></p>
+   <button class="back-button" onclick="nextIdiom()">下一個成語</button>
+   <button class="back-button" onclick="backToModeSelect()">上一頁</button>
+ </div>
+
+
+ <!-- quiz mode -->
+ <div class="card hidden" id="quiz-mode">
+   <h2>請選出正確的成語字填空</h2>
+   <div id="quiz-explanation"></div>
+   <div id="quiz-idom"></div>
+   <div class="options" id="quiz-options"></div>
+   <p id="quiz-feedback"></p>
+   <p id="daily-score">今日答對次數：0</p>
+   <button class="back-button" onclick="nextQuiz()">下一題</button>
+   <button class="back-button" onclick="backToModeSelect()">上一頁</button>
+ </div>
+
+  <link rel="stylesheet" href="chinese_idiom.css">
+  <script src="chinese_idiom.js" defer></script>
+
+</body>
+</html>

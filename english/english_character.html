@@ -11,7 +11,7 @@
   <h1>英文單字複習</h1>
   <hr style="margin: 30px auto; width: 100%; border: 2px solid #301566;">
 
-  <!-- Step 1: 選角色 -->
+  <!-- Step 1: Choose a user -->
   <div id="role-select">
     <h1>Who are you?</h1>
     <div class="role-container">
@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <!-- Step 2: 選題數 & 模式 -->
+  <!-- Step 2: choose mode -->
   <div class="start-buttons hidden" id="start-buttons">
     <h2>英翻中練習 30 題</h2>
     <button onclick="startGame(30, 'en-to-zh')">Start</button>
@@ -37,7 +37,7 @@
     <button onclick="startGame(30, 'zh-to-en')">Start</button>
   </div>
 
-  <!-- Step 3: 測驗區 -->
+  <!-- Step 3: quiz -->
   <div class="quiz-box hidden" id="quiz-box">
     <h2 id="section-title">單字：（選正確的）</h2> 
     <div class="word" id="word">Loading...</div>
@@ -52,10 +52,10 @@
 
   <script>
     function selectRole(element, role) {
-      // 加上點擊動畫
+      // Add click animation
       element.classList.add("clicked");
 
-      // 0.6秒後進入下一步
+      // Go to the next step after 0.6 seconds
       setTimeout(() => {
         chooseRole(role);
       }, 600);

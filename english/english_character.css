@@ -4,6 +4,7 @@ body {
     text-align: center;
     padding: 30px;
 }
+
 .quiz-box {
     background-color: white;
     padding: 30px;
@@ -13,10 +14,12 @@ body {
     margin: auto;
     margin-top: 20px;
 }
+
 .word {
     font-size: 44px;
     margin-bottom: 20px;
 }
+
 .option {
     display: block;
     margin: 10px 0;
@@ -27,25 +30,31 @@ body {
     cursor: pointer;
     font-size: 36px;
 }
+
 .option:hover {
     background-color: #d0e0ff;
 }
+
 .correct {
     background-color: #c8f7c5 !important;
 }
+
 .wrong {
     background-color: #f7c5c5 !important;
 }
+
 #next-btn {
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 16px;
     display: none;
 }
+
 #score-box {
     margin-top: 20px;
     font-size: 18px;
 }
+
 .start-buttons button {
     margin: 20px;
     padding: 20px 40px;
@@ -56,76 +65,90 @@ body {
     color: white;
     cursor: pointer;
 }
+
 .start-buttons button:hover {
     background-color: #3367d6;
+
 }
+
 .section-title {
-font-size: 24px;
-margin-bottom: 10px;
-color: #444;
-border-bottom: 2px solid #ccc;
-padding-bottom: 5px;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #444;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
 }
 
 #footer-bar {
-  text-align: center;
-  margin-top: 200px;
-  padding: 20px 0;
+    text-align: center;
+    margin-top: 200px;
+    padding: 20px 0;
 }
 
-
 #back-button {
-  padding: 20px 40px;
-  font-size: 20px;
-  background-color: #4c8bf5;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+    padding: 20px 40px;
+    font-size: 20px;
+    background-color: #4c8bf5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 #back-button:hover {
-  background-color: #3367d6;
+    background-color: #3367d6;
 }
 
 .restart-button {
-  margin-top: 20px;
-  padding: 20px 30px;
-  font-size: 24px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+    margin-top: 20px;
+    padding: 20px 30px;
+    font-size: 24px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 .restart-button:hover {
-  background-color: #45a049;
+    background-color: #45a049;
 }
 
-.hidden { display: none; }
+.hidden { 
+    display: none; 
+}
+
 button {
-  padding: 10px 20px;
-  font-size: 18px;
-  margin: 10px;
-  cursor: pointer;
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
 }
+
 .option {
-  border: 1px solid #180937;
-  padding: 10px;
-  margin: 5px;
-  border-radius: 5px;
-  cursor: pointer;
+    order: 1px solid #180937;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
 }
-.correct { background-color: #c8e6c9; }
-.wrong { background-color: #ffcdd2; }
+
+.correct { 
+    background-color: #c8e6c9; 
+}
+
+.wrong { 
+    background-color: #ffcdd2; 
+}
 
 body {
     font-family: Arial, sans-serif;
     text-align: center;
 }
 
-.hidden { display: none; }
+.hidden { 
+    display: none; 
+}
 
 /* 角色選擇區 */
 .role-container {

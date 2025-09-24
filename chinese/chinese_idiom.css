@@ -1,0 +1,87 @@
+body { 
+  font-family: sans-serif;
+  text-align: center; 
+  padding: 20px; 
+}
+
+.card { 
+  border: 2px solid #333; 
+  border-radius: 10px; 
+  padding: 20px; 
+  margin: 20px auto; 
+  width: 60%; 
+}
+
+button { margin-top: 20px; 
+  padding: 10px 20px; 
+  cursor: pointer; 
+}
+
+table { 
+  border-collapse: collapse; 
+  margin: 20px auto; 
+}
+
+td { 
+  text-align: center; 
+  vertical-align: middle; 
+}
+
+.char { 
+  font-size: 4rem; 
+  font-family: "標楷體"; 
+  padding: 0 5px; 
+}
+
+.zhuyin { 
+  font-size: 0.9rem; 
+  font-family: "標楷體"; 
+  width: 12px; line-height: 120%; 
+}
+
+.hidden { 
+  display: none; 
+}
+
+.options button { 
+  margin: 5px; 
+}
+
+#mode-select button {
+  margin: 20px;
+  padding: 20px 40px;
+  font-size: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: #3db4e3;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* 滑鼠懸停效果 */
+#mode-select button:hover {
+  background-color: #3399cc;
+  transform: scale(1.05);
+}
+
+.back-button {
+  padding: 20px 40px;
+  font-size: 20px;
+  background-color: #01937b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px; /* 可以增加間距 */
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.back-button:hover {
+  background-color: #045e61;
+  transform: scale(1.05);
+}
+
+#quiz-explanation {
+  font-size: 22px; /* 你想要的字體大小 */
+}
