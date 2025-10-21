@@ -133,7 +133,22 @@ const quizData = [
   { word: "local", answer: "本土的" },
   { word: "type", answer: "打字" },
   { word: "juice", answer: "果汁" },
-
+  { word: "dining room", answer: "飯廳" },
+  { word: "basement", answer: "地下室" },
+  { word: "garden", answer: "花園" },
+  { word: "living room", answer: "客廳" },
+  { word: "kitchen", answer: "廚房" },
+  { word: "bedroom", answer: "臥房" },
+  { word: "yard", answer: "院子" },
+  { word: "bathroom", answer: "浴室" },
+  { word: "on", answer: "在...上面" },
+  { word: "in", answer: "在...裡面" },
+  { word: "behind", answer: "在...後面" },
+  { word: "between", answer: "在...中間" },
+  { word: "next to", answer: "在...旁邊" },
+  { word: "under", answer: "在...下面" },
+  { word: "in front of", answer: "在...前面" },
+  { word: "near", answer: "在...附近" }
 
 ];
 

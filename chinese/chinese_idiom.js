@@ -2149,3 +2149,7 @@ function nextQuiz() {
 window.addEventListener("DOMContentLoaded", () => {
     initDailyScore();
 });
+
+function goBack() {
+  window.location.href = "https://ChiaYunn.github.io/front_page.html";
+}
