@@ -148,7 +148,17 @@ const quizData = [
   { word: "next to", answer: "在...旁邊" },
   { word: "under", answer: "在...下面" },
   { word: "in front of", answer: "在...前面" },
-  { word: "near", answer: "在...附近" }
+  { word: "near", answer: "在...附近" },
+  { word: "tiger", answer: "老虎" },
+  { word: "hippo", answer: "河馬" },
+  { word: "monkey", answer: "猴子" },
+  { word: "parrot", answer: "鸚鵡" },
+  { word: "lion", answer: "獅子" },
+  { word: "goat", answer: "山羊" },
+  { word: "zebra", answer: "斑馬" },
+  { word: "elephant", answer: "大象" },
+  { word: "bear", answer: "熊" },
+  { word: "snake", answer: "蛇" }
 
 ];
 
