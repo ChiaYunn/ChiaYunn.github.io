@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="draw_lots.css">
+
+<title>Draw Lots Machine</title>
+
+</head>
+<body>
+
+<h1>🎀 Draw Lots Machine 🎀</h1>
+
+<div class="container">
+    <!-- draw lots area -->
+    <div class="card" id="card-area">
+        <div id="sparkle-area"></div>
+
+        <p style="font-size:1.8rem; color:#eb3b82">Who are you?</p>
+        <div id="kid-buttons">
+            <button class="btn" onclick="selectKid('Ray', this)">Ray</button>
+            <button class="btn" onclick="selectKid('Elsa', this)">Elsa</button>
+            <button class="btn" onclick="selectKid('Mia', this)">Mia</button>
+        </div>
+
+        <div id="lottery-section" style="display:none; margin-top:10px;">
+            <p style="font-size:1.2rem;">請輸入籤文（每行一個）：</p>
+            <textarea id="lotteryInput" placeholder="例如：&#10;大吉🐰&#10;中吉🍓&#10;吃好吃的🍰&#10;出門玩✨"></textarea>
+
+            <button class="btn" onclick="draw()">✨開始抽籤✨</button>
+            <div style="margin-top: 10px; text-align: center;">
+                <button class="btn" onclick="backToSelect()" >🏃‍♂️回到選人🏃‍♂️</button>
+            </div>        
+        </div>
+
+        <div id="result" class="result-popup">等待抽籤中～</div>
+    </div>
+
+    <!-- statistical area -->
+    <div id="stats">
+        <h3 style="font-size:1.8rem; color:#eb3b82">抽籤統計</h3>
+        <div id="stat-list">尚未抽過籤～</div>
+        <button id="clear-btn" class="btn" onclick="clearStats()">清除統計 🗑️</button>
+    </div>
+</div>
+<script src="draw_lots.js" defer></script>
+
+</body>
+</html>

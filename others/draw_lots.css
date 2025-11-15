@@ -1,0 +1,141 @@
+body {
+    background: linear-gradient(135deg, #ffe3f3, #ffd7ef);
+    font-family: "Comic Sans MS", "Microsoft JhengHei", sans-serif;
+    margin: 0;
+    padding: 40px;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #ff6fa8;
+    text-shadow: 2px 2px #ffcde6;
+    text-align: center;
+    animation: titleFloat 2s infinite ease-in-out;
+}
+
+@keyframes titleFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #fff;
+    width: 450px;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 10px 20px rgba(255, 105, 180, 0.25);
+    border: 3px solid #ffb6d6;
+    position: relative;
+    overflow: hidden;
+}
+
+textarea {
+    width: 90%;
+    height: 150px;
+    border-radius: 15px;
+    border: 2px solid #ffb6d6;
+    padding: 10px;
+    background: #fff8fc;
+    font-size: 1.1rem;
+    outline: none;
+    resize: none;
+}
+
+.btn {
+    background: #ff9bd0;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 40px;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 6px 0 #d67bb1;
+    margin: 5px;
+}
+
+.btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #d67bb1;
+}
+
+.result-popup {
+    opacity: 0;
+    transform: scale(0.5);
+    background: #fff;
+    border: 3px solid #ff86b9;
+    padding: 20px;
+    border-radius: 20px;
+    font-size: 2rem;
+    width: 300px;
+    margin: 20px auto 0;
+    box-shadow: 0 10px 20px rgba(255, 105, 180, 0.4);
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+}
+.btn:hover {
+    background: #ff6fa8; /* 更深一點的粉色 */
+}
+.result-show {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}
+
+.shake {
+    animation: shakeAnim 0.5s ease-in-out;
+}
+
+@keyframes shakeAnim {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(3deg); }
+    50% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.sparkle {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0;
+    animation: sparkleFloat 1.5s infinite ease-in-out;
+}
+
+@keyframes sparkleFloat {
+    0% { transform: translateY(0); opacity: 0; }
+    50% { transform: translateY(-15px); opacity: 1; }
+    100% { transform: translateY(0); opacity: 0; }
+}
+
+/* 統計區 */
+#stats {
+    background: #fff0f6;
+    border-radius: 20px;
+    border: 2px solid #ffb6d6;
+    padding: 15px;
+    width: 300px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#stats h3 { text-align:center; margin-bottom:10px; }
+#stats ul { list-style:none; padding-left:0; width:100%; }
+#stats li { padding:3px 0; }
+
+#clear-btn {
+    margin-top: 15px;
+    width: 80%;
+    text-align:center;
+}
+
+#card-area, #kid-buttons, #lottery-section {
+text-align: center;
+}
+
