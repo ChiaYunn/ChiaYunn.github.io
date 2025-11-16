@@ -1,24 +1,187 @@
 // example
 const quizData = [
-  {word:'apple', answer:'蘋果', lesson:1},
-  {word:'banana', answer:'香蕉', lesson:1},
-  {word:'cat', answer:'貓', lesson:2},
-  {word:'dog', answer:'狗', lesson:2},
-  {word:'egg', answer:'蛋', lesson:3},
-  {word:'fish', answer:'魚', lesson:3},
-  {word:'grape', answer:'葡萄', lesson:4},
-  {word:'hat', answer:'帽子', lesson:4},
-  {word:'ice', answer:'冰', lesson:5},
-  {word:'juice', answer:'果汁', lesson:5},
-  {word:'kite', answer:'風箏', lesson:6},
-  {word:'lion', answer:'獅子', lesson:6},
-  {word:'moon', answer:'月亮', lesson:7},
-  {word:'nest', answer:'鳥巢', lesson:7},
-  {word:'orange', answer:'橘子', lesson:8},
-  {word:'pig', answer:'豬', lesson:8},
-  {word:'queen', answer:'女王', lesson:9},
-  {word:'rain', answer:'雨', lesson:9}
+  { word: "girl", answer: "女孩", lessonId:'1-1'},
+  { word: "boy", answer: "男孩", lessonId:'1-1'},
+  { word: "man", answer: "男人", lessonId:'1-1'},
+  { word: "woman", answer: "女人", lessonId:'1-1'},
+  { word: "student", answer: "學生", lessonId:'1-1'},
+  { word: "teacher", answer: "老師", lessonId:'1-1'},
+
+  { word: "me", answer: "我", lessonId:'1-2'},
+  { word: "mother", answer: "媽媽", lessonId:'1-2'},
+  { word: "father", answer: "爸爸", lessonId:'1-2'},
+  { word: "grandmother", answer: "外婆 / 祖母", lessonId:'1-2'},
+  { word: "grandfather", answer: "外公 / 祖父", lessonId:'1-2'},
+  { word: "uncle", answer: "叔叔 / 舅舅" , lessonId:'1-2'},
+  { word: "aunt", answer: "阿姨 / 姑姑", lessonId:'1-2'},
+  { word: "cousin(s)", answer: "堂/表兄弟姊妹", lessonId:'1-2'},
+  { word: "brother", answer: "兄弟", lessonId:'1-2'},
+  { word: "sister", answer: "姊妹", lessonId:'1-2'},
+
+  { word: "stationery", answer: "文具", lessonId:'1-3'},
+  { word: "pen", answer: "筆", lessonId:'1-3'},
+  { word: "pencil case", answer: "鉛筆盒", lessonId:'1-3'},
+  { word: "school bag", answer: "書包", lessonId:'1-3'},
+  { word: "eraser", answer: "橡皮擦", lessonId:'1-3'},
+  { word: "table", answer: "桌子", lessonId:'1-3'},
+  { word: "chair", answer: "椅子", lessonId:'1-3'},
+  { word: "book", answer: "書", lessonId:'1-3'},
+
+  { word: "zero", answer: "零", lessonId:'1-4'},
+  { word: "one", answer: "一", lessonId:'1-4'},
+  { word: "two", answer: "二", lessonId:'1-4'},
+  { word: "three", answer: "三", lessonId:'1-4'},
+  { word: "four", answer: "四", lessonId:'1-4'},
+  { word: "five", answer: "五", lessonId:'1-4'},
+  { word: "six", answer: "六", lessonId:'1-4'},
+  { word: "seven", answer: "七", lessonId:'1-4'},
+  { word: "eight", answer: "八", lessonId:'1-4'},
+  { word: "nine", answer: "九", lessonId:'1-4'},
+  { word: "ten", answer: "十", lessonId:'1-4'},
+  { word: "number", answer: "數字", lessonId:'1-4'},
+  { word: "year", answer: "年", lessonId:'1-4'},
+
+  { word: "sad", answer: "難過的", lessonId:'1-5'},
+  { word: "happy", answer: "快樂的", lessonId:'1-5'},
+  { word: "young", answer: "年輕的", lessonId:'1-5'},
+  { word: "old", answer: "年老的", lessonId:'1-5'},
+  { word: "chubby", answer: "圓胖的", lessonId:'1-5'},
+  { word: "thin", answer: "瘦的", lessonId:'1-5'},
+  { word: "short", answer: "矮的", lessonId:'1-5'},
+  { word: "tall", answer: "高的", lessonId:'1-5'},
+  { word: "cute", answer: "可愛的", lessonId:'1-5'},
+
+  { word: "color", answer: "顏色", lessonId:'1-6'},
+  { word: "red", answer: "紅色", lessonId:'1-6'},
+  { word: "yellow", answer: "黃色", lessonId:'1-6'},
+  { word: "blue", answer: "藍色", lessonId:'1-6'},
+  { word: "pink", answer: "粉紅色", lessonId:'1-6'},
+  { word: "purple", answer: "紫色", lessonId:'1-6'},
+  { word: "white", answer: "白色", lessonId:'1-6'},
+  { word: "black", answer: "黑色", lessonId:'1-6'},
+  { word: "brown", answer: "咖啡色", lessonId:'1-6'},
+  { word: "green", answer: "綠色", lessonId:'1-6'},
+  { word: "orange", answer: "橘色", lessonId:'1-6'},
+
+  { word: "hungry", answer: "餓的", lessonId:'1-7'},
+  { word: "angry", answer: "生氣的", lessonId:'1-7'},
+  { word: "quiet", answer: "安靜的", lessonId:'1-7'},
+  { word: "sleepy", answer: "愛睏的", lessonId:'1-7'},
+  { word: "thirsty", answer: "口渴的", lessonId:'1-7'},
+  { word: "noisy", answer: "吵鬧的", lessonId:'1-7'},
+  { word: "lazy", answer: "懶惰的", lessonId:'1-7'},
+  { word: "tired", answer: "累的", lessonId:'1-7'},
+
+  { word: "dress", answer: "洋裝", lessonId:'1-8'},
+  { word: "T-shirt", answer: "T恤", lessonId:'1-8'},
+  { word: "skirt", answer: "裙子", lessonId:'1-8'},
+  { word: "coat", answer: "大衣", lessonId:'1-8'},
+  { word: "jacket", answer: "外套", lessonId:'1-8'},
+  { word: "hat", answer: "帽子", lessonId:'1-8'},
+
+  { word: "duck", answer: "鴨子", lessonId:'1-9'},
+  { word: "pig", answer: "豬", lessonId:'1-9'},
+  { word: "rabbit", answer: "兔子", lessonId:'1-9'},
+  { word: "cow", answer: "牛", lessonId:'1-9'},
+  { word: "chicken", answer: "雞", lessonId:'1-9'},
+  { word: "sheep", answer: "綿羊", lessonId:'1-9'},
+  { word: "rat", answer: "老鼠", lessonId:'1-9'},
+  { word: "dog", answer: "狗", lessonId:'1-9'},
+  { word: "cat", answer: "貓", lessonId:'1-9'},
+  { word: "horse", answer: "馬", lessonId:'1-9'},
+
+
+
+  /* Volume-2 */
+  { word: "classroom", answer: "教室", lessonId:'2-1'},
+  { word: "window", answer: "窗戶", lessonId:'2-1'},
+  { word: "trash can", answer: "垃圾桶", lessonId:'2-1'},
+  { word: "desk", answer: "書桌", lessonId:'2-1'},
+  { word: "whiteboard", answer: "白板", lessonId:'2-1'},
+  { word: "blackboard", answer: "黑板", lessonId:'2-1'},
+  { word: "speaker", answer: "喇叭", lessonId:'2-1'},
+  { word: "fan", answer: "電風扇", lessonId:'2-1'},
+  { word: "door", answer: "門", lessonId:'2-1'},
+
+  { word: "eleven", answer: "十一", lessonId:'2-2'},
+  { word: "twelve", answer: "十二", lessonId:'2-2'},
+  { word: "thirteen", answer: "十三", lessonId:'2-2'},
+  { word: "fourteen", answer: "十四", lessonId:'2-2'},
+  { word: "fifteen", answer: "十五", lessonId:'2-2'},
+  { word: "sixteen", answer: "十六", lessonId:'2-2'},
+  { word: "seventeen", answer: "十七", lessonId:'2-2'},
+  { word: "eighteen", answer: "十八", lessonId:'2-2'},
+  { word: "nineteen", answer: "十九", lessonId:'2-2'},
+  { word: "twenty", answer: "二十", lessonId:'2-2'},
+
+  { word: "video game", answer: "電玩遊戲", lessonId:'2-3'},
+  { word: "blocks", answer: "積木", lessonId:'2-3'},
+  { word: "board game", answer: "桌上遊戲", lessonId:'2-3'},
+  { word: "toy store", answer: "玩具店", lessonId:'2-3'},
+  { word: "ball", answer: "球", lessonId:'2-3'},
+  { word: "doll", answer: "洋娃娃", lessonId:'2-3'},
+  { word: "robot", answer: "機器人", lessonId:'2-3'},
+  { word: "teddy bear", answer: "泰迪熊", lessonId:'2-3'},
   
+  { word: "papaya(s)", answer: "木瓜", lessonId:'2-4'},
+  { word: "guava(s)", answer: "芭樂", lessonId:'2-4'},
+  { word: "pear(s)", answer: "西洋梨", lessonId:'2-4'},
+  { word: "banana(s)", answer: "香蕉", lessonId:'2-4'},
+  { word: "watermelon(s)", answer: "西瓜", lessonId:'2-4'},
+  { word: "melon(s)", answer: "哈蜜瓜", lessonId:'2-4'},
+  { word: "lemon(s)", answer: "檸檬", lessonId:'2-4'},
+  { word: "grape(s)", answer: "葡萄", lessonId:'2-4'},
+  { word: "juice", answer: "果汁", lessonId:'2-4'},
+
+  { word: "orange(s)", answer: "柳丁", lessonId:'2-5'},
+  { word: "chreey(ies)", answer: "櫻桃", lessonId:'2-5'},
+  { word: "peach(es)", answer: "水蜜桃", lessonId:'2-5'},
+  { word: "coconut(s)", answer: "椰子", lessonId:'2-5'},
+  { word: "straberry(ies)", answer: "草莓", lessonId:'2-5'},
+  { word: "tomato(es)", answer: "番茄", lessonId:'2-5'},
+  { word: "kiwi(s)", answer: "奇異果", lessonId:'2-5'},
+  { word: "mango(es)", answer: "芒果", lessonId:'2-5'},
+
+  { word: "run", answer: "跑", lessonId:'2-6'},
+  { word: "jump", answer: "跳", lessonId:'2-6'},
+  { word: "swim", answer: "遊泳", lessonId:'2-6'},
+  { word: "read", answer: "閱讀", lessonId:'2-6'},
+  { word: "write", answer: "寫", lessonId:'2-6'},
+  { word: "dance", answer: "跳舞", lessonId:'2-6'},
+  { word: "sing", answer: "唱歌", lessonId:'2-6'},
+  { word: "local", answer: "本土的", lessonId:'2-6'},
+  { word: "type", answer: "打字", lessonId:'2-6'},
+
+  { word: "dining room", answer: "飯廳", lessonId:'2-7'},
+  { word: "basement", answer: "地下室", lessonId:'2-7'},
+  { word: "garden", answer: "花園", lessonId:'2-7'},
+  { word: "living room", answer: "客廳", lessonId:'2-7'},
+  { word: "kitchen", answer: "廚房", lessonId:'2-7'},
+  { word: "bedroom", answer: "臥房", lessonId:'2-7'},
+  { word: "yard", answer: "院子", lessonId:'2-7'},
+  { word: "bathroom", answer: "浴室", lessonId:'2-7'},
+
+  { word: "on", answer: "在...上面", lessonId:'2-8'},
+  { word: "in", answer: "在...裡面", lessonId:'2-8'},
+  { word: "behind", answer: "在...後面", lessonId:'2-8'},
+  { word: "between", answer: "在...中間", lessonId:'2-8'},
+  { word: "next to", answer: "在...旁邊", lessonId:'2-8'},
+  { word: "under", answer: "在...下面", lessonId:'2-8'},
+  { word: "in front of", answer: "在...前面", lessonId:'2-8'},
+  { word: "near", answer: "在...附近", lessonId:'2-8'},
+
+  { word: "tiger", answer: "老虎", lessonId:'2-9'},
+  { word: "hippo", answer: "河馬", lessonId:'2-9'},
+  { word: "monkey", answer: "猴子", lessonId:'2-9'},
+  { word: "parrot", answer: "鸚鵡", lessonId:'2-9'},
+  { word: "lion", answer: "獅子", lessonId:'2-9'},
+  { word: "goat", answer: "山羊", lessonId:'2-9'},
+  { word: "zebra", answer: "斑馬", lessonId:'2-9'},
+  { word: "elephant", answer: "大象", lessonId:'2-9'},
+  { word: "bear", answer: "熊", lessonId:'2-9'},
+  { word: "snake", answer: "蛇", lessonId:'2-9'}
+
+
 ];
 
 let selectedKid = null;
@@ -39,9 +202,10 @@ function selectRole(card, kid){
 }
 
 // multiple select
-function toggleCourse(btn, lessonId){
-    const id = Number(btn.dataset.lesson); 
+function toggleCourse(btn){
+    const id = btn.dataset.lessonid;  // ⭐ 改這裡！用字串
     const index = selectedCourses.indexOf(id);
+
     if(index > -1){
         selectedCourses.splice(index,1);
         btn.classList.remove("selected");
@@ -61,11 +225,11 @@ function toggleSelectAllCourses() {
         selectedCourses = [];
     } else {
         allButtons.forEach(btn => btn.classList.add("selected"));
-        selectedCourses = Array.from(allButtons).map(btn => Number(btn.dataset.lesson));
+        selectedCourses = Array.from(allButtons).map(btn => btn.dataset.lessonid); // ⭐ 改這裡
     }
 }
 
-const filteredQuestions = quizData.filter(q => selectedCourses.includes(q.lesson));
+
 
 
 
@@ -88,7 +252,7 @@ function startGame(count, mode){
     current = 0;
     score = 0;
 
-    const filteredQuestions = quizData.filter(q=> selectedCourses.includes(q.lesson));
+    const filteredQuestions = quizData.filter(q=> selectedCourses.includes(q.lessonId));
     selectedQuestions = shuffle(filteredQuestions).slice(0,count);
 
     document.getElementById('start-buttons').classList.add('hidden');
