@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>英文單字測驗</title>
+<style>
+body {
+    font-family: "Microsoft JhengHei", sans-serif;
+    text-align: center;
+    padding: 40px;
+    background: #fff0f6;
+}
+h1 { color:#ff69b4; }
+button { 
+    margin:5px; padding:12px 24px; font-size:1.2rem; border-radius:10px; border:none; cursor:pointer;
+    background:#ff9bd0; color:white; transition:0.2s;
+}
+button:hover { background:#ff6fa8; }
+.option {
+    margin:5px; padding:10px 15px; display:inline-block; border-radius:8px; cursor:pointer;
+    border:1px solid #ffb6d6; transition:0.2s;
+}
+.option:hover { background:#ffe0f0; }
+.correct { background:#90ee90; }
+.wrong { background:#ff7f7f; }
+#quiz-box { display:none; margin-top:20px; }
+#start-buttons { display:none; margin-top:20px; }
+#role-select, #course-select { margin-top:20px; }
+.course-btn.selected { background:#ff6fa8; }
+.container { max-width:600px; margin:0 auto; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>英文單字測驗 🎀</h1>
+
+<!-- 選小孩 -->
+<div id="role-select">
+    <p>請選小孩：</p>
+    <button onclick="chooseKid('Ray', this)">Ray</button>
+    <button onclick="chooseKid('Elsa', this)">Elsa</button>
+    <button onclick="chooseKid('Mia', this)">Mia</button>
+</div>
+
+<!-- 選課程 -->
+<div id="course-select" style="display:none; text-align:center; margin-top:20px;">
+    <p><b>請選課程（第一冊～第九冊）：</b></p>
+    <div id="course-buttons">
+        <button class="course-btn" data-lesson="1" onclick="toggleCourse(this)">第1冊</button>
+        <button class="course-btn" data-lesson="2" onclick="toggleCourse(this)">第2冊</button>
+        <button class="course-btn" data-lesson="3" onclick="toggleCourse(this)">第3冊</button>
+        <button class="course-btn" data-lesson="4" onclick="toggleCourse(this)">第4冊</button>
+        <button class="course-btn" data-lesson="5" onclick="toggleCourse(this)">第5冊</button>
+        <button class="course-btn" data-lesson="6" onclick="toggleCourse(this)">第6冊</button>
+        <button class="course-btn" data-lesson="7" onclick="toggleCourse(this)">第7冊</button>
+        <button class="course-btn" data-lesson="8" onclick="toggleCourse(this)">第8冊</button>
+        <button class="course-btn" data-lesson="9" onclick="toggleCourse(this)">第9冊</button>
+    </div>
+    <p>
+        <button onclick="selectAllCourses()">全選</button>
+    </p>
+    <p>
+        <button onclick="confirmCourses()">確認課程</button>
+    </p>
+</div>
+
+<!-- 開始按鈕 -->
+<div id="start-buttons">
+    <p>選擇模式：</p>
+    <button onclick="startGame(5,'en-to-zh')">英文→中文</button>
+    <button onclick="startGame(5,'zh-to-en')">中文→英文</button>
+</div>
+
+<!-- 測驗區 -->
+<div id="quiz-box">
+    <h2 id="word">單字</h2>
+    <div id="options"></div>
+    <p id="score-box"></p>
+    <button id="next-btn" onclick="nextQuestion()" style="display:none;">下一題</button>
+</div>
+</div>
+
+<script>
+// 題庫範例
+const quizData = [
+  {word:'apple', answer:'蘋果', lesson:1},
+  {word:'banana', answer:'香蕉', lesson:1},
+  {word:'cat', answer:'貓', lesson:2},
+  {word:'dog', answer:'狗', lesson:2},
+  {word:'egg', answer:'蛋', lesson:3},
+  {word:'fish', answer:'魚', lesson:3},
+  {word:'grape', answer:'葡萄', lesson:4},
+  {word:'hat', answer:'帽子', lesson:4},
+  {word:'ice', answer:'冰', lesson:5},
+  {word:'juice', answer:'果汁', lesson:5},
+  {word:'kite', answer:'風箏', lesson:6},
+  {word:'lion', answer:'獅子', lesson:6},
+  {word:'moon', answer:'月亮', lesson:7},
+  {word:'nest', answer:'鳥巢', lesson:7},
+  {word:'orange', answer:'橘子', lesson:8},
+  {word:'pig', answer:'豬', lesson:8},
+  {word:'queen', answer:'女王', lesson:9},
+  {word:'rain', answer:'雨', lesson:9}
+];
+
+let selectedKid = null;
+let selectedCourses = [];
+let selectedQuestions = [];
+let current = 0;
+let score = 0;
+let currentMode = 'en-to-zh';
+
+// 選小孩
+function chooseKid(name, btn){
+    selectedKid = name;
+    selectedCourses = [];
+    document.getElementById('role-select').style.display='none';
+    document.getElementById('course-select').style.display='block';
+    // 重置課程按鈕樣式
+    document.querySelectorAll('#course-buttons button').forEach(b=>b.classList.remove('selected'));
+}
+
+// 多選課程
+function toggleCourse(btn){
+    const lesson = parseInt(btn.dataset.lesson);
+    const index = selectedCourses.indexOf(lesson);
+    if(index > -1){
+        selectedCourses.splice(index,1);
+        btn.classList.remove('selected');
+    } else {
+        selectedCourses.push(lesson);
+        btn.classList.add('selected');
+    }
+}
+
+// 全選課程
+function selectAllCourses(){
+    selectedCourses = [1,2,3,4,5,6,7,8,9];
+    document.querySelectorAll("#course-buttons button").forEach(btn => btn.classList.add("selected"));
+}
+
+// 確認課程
+function confirmCourses(){
+    if(selectedCourses.length===0){ alert("請至少選一個課程"); return; }
+    document.getElementById('course-select').style.display='none';
+    document.getElementById('start-buttons').style.display='block';
+}
+
+// 洗牌
+function shuffle(array){ return array.sort(()=>Math.random()-0.5); }
+
+// 開始測驗
+function startGame(count, mode){
+    if(!selectedKid){ alert("請先選小孩"); return; }
+    if(selectedCourses.length===0){ alert("請先選課程"); return; }
+
+    currentMode = mode;
+    current = 0;
+    score = 0;
+    // 過濾所有選中的課程
+    const filteredQuestions = quizData.filter(q=> selectedCourses.includes(q.lesson));
+    selectedQuestions = shuffle(filteredQuestions).slice(0,count);
+
+    document.getElementById('start-buttons').style.display='none';
+    document.getElementById('quiz-box').style.display='block';
+    showQuestion();
+}
+
+// 顯示題目
+function showQuestion(){
+    const data = selectedQuestions[current];
+    const word = currentMode==='en-to-zh'?data.word:data.answer;
+    const correct = currentMode==='en-to-zh'?data.answer:data.word;
+    document.getElementById('word').textContent=word;
+
+    if(currentMode==='en-to-zh'){
+        const utterance=new SpeechSynthesisUtterance(data.word);
+        utterance.lang='en-US';
+        speechSynthesis.speak(utterance);
+    }
+
+    const optionsContainer=document.getElementById('options');
+    optionsContainer.innerHTML='';
+
+    const allChoices = quizData.map(q=>currentMode==='en-to-zh'?q.answer:q.word)
+        .filter(ans=>ans!==correct);
+    const wrongChoices = shuffle(allChoices).slice(0,3);
+    const finalChoices = shuffle([correct,...wrongChoices]);
+
+    finalChoices.forEach(choice=>{
+        const btn=document.createElement('div');
+        btn.className='option';
+        btn.textContent=choice;
+        btn.onclick=()=>checkAnswer(btn,choice,correct);
+        optionsContainer.appendChild(btn);
+    });
+
+    document.getElementById('next-btn').style.display='none';
+    document.getElementById('score-box').textContent=`第 ${current+1} 題 / 共 ${selectedQuestions.length} 題`;
+}
+
+// 檢查答案
+function checkAnswer(button, choice, correct){
+    const options=document.querySelectorAll('.option');
+    options.forEach(opt=>{
+        opt.onclick=null;
+        if(opt.textContent===correct) opt.classList.add('correct');
+        else if(opt.textContent===choice) opt.classList.add('wrong');
+    });
+    if(choice===correct) score++;
+    document.getElementById('next-btn').style.display='inline-block';
+}
+
+// 下一題
+function nextQuestion(){
+    current++;
+    if(current<selectedQuestions.length) showQuestion();
+    else showScore();
+}
+
+// 顯示分數
+function showScore(){
+    document.getElementById('quiz-box').innerHTML=`
+        <h2>${selectedKid} 測驗完成！</h2>
+        <h3>得分：${score} / ${selectedQuestions.length}</h3>
+        <button onclick="location.reload()">再玩一次？</button>
+    `;
+}
+</script>
+
+</body>
+</html>

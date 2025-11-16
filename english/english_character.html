@@ -1,33 +1,74 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>英文單字測驗</title>
-  <script src="english_character.js" defer></script>
-  <link rel="stylesheet" href="english_character.css">
-
+<meta charset="UTF-8">
+<title>英文單字測驗</title>
+<link rel="stylesheet" href="english_character.css">
 </head>
 <body>
-  <h1>英文單字複習</h1>
-  <hr style="margin: 30px auto; width: 100%; border: 2px solid #301566;">
 
-  <!-- Step 1: Choose a user -->
-  <div id="role-select">
+<!-- Step 1: Choose a user -->
+<div id="role-select">
     <h1>Who are you?</h1>
-    <div class="role-container">
-      <div class="role-card" onclick="selectRole(this, 'ray')">
-        <img src="img/ray.png" alt="Ray">
-        <span>Ray</span>
-      </div>
-      <div class="role-card" onclick="selectRole(this, 'elsa')">
-        <img src="img/elsa.png" alt="Elsa">
-        <span>Elsa</span>
-      </div>
-    </div>
-  </div>
+    <hr style="margin: 30px auto; width: 80%; border: 1px solid #2f0b70;">
 
-  <!-- Step 2: choose mode -->
-  <div class="start-buttons hidden" id="start-buttons">
+    <div class="role-container">
+        <div class="role-card" onclick="selectRole(this, 'Ray')">
+            <img src="img/ray.png" alt="Ray">
+            <span>Ray</span>
+        </div>
+        <div class="role-card" onclick="selectRole(this, 'Elsa')">
+            <img src="img/elsa.png" alt="Elsa">
+            <span>Elsa</span>
+        </div>
+        <div class="role-card" onclick="selectRole(this, 'Mia')">
+            <img src="img/elsa.png" alt="Mia">
+            <span>Mia</span>
+        </div>
+    </div>
+</div>
+
+<!-- Step 1.5: Choose course -->
+<div id="course-select" class="hidden">
+    <h2>選擇練習範圍：</h2>
+    <hr style="margin: 30px auto; width: 80%; border: 1px solid #2f0b70;">
+    <h3>第一冊：</h3>
+    <div id="course-buttons-1">
+        <button class="course-btn" data-lesson="1" onclick="toggleCourse(this,1)">Unit 1</button>
+        <button class="course-btn" data-lesson="2" onclick="toggleCourse(this,1)">Unit 2</button>
+        <button class="course-btn" data-lesson="3" onclick="toggleCourse(this,1)">Unit 3</button>
+        <button class="course-btn" data-lesson="4" onclick="toggleCourse(this,1)">Unit 4</button>
+        <button class="course-btn" data-lesson="5" onclick="toggleCourse(this,1)">Unit 5</button>
+        <button class="course-btn" data-lesson="6" onclick="toggleCourse(this,1)">Unit 6</button>
+        <button class="course-btn" data-lesson="7" onclick="toggleCourse(this,1)">Unit 7</button>
+        <button class="course-btn" data-lesson="8" onclick="toggleCourse(this,1)">Unit 8</button>
+        <button class="course-btn" data-lesson="9" onclick="toggleCourse(this,1)">Unit 9</button>
+    </div>
+    <hr style="margin: 30px auto; width: 95%; border: 1px solid #2f0b70;">
+
+    <h3>第二冊：</h3>
+    <div id="course-buttons-2">
+        <button class="course-btn" data-lesson="1" onclick="toggleCourse(this,2)">Unit 1</button>
+        <button class="course-btn" data-lesson="2" onclick="toggleCourse(this,2)">Unit 2</button>
+        <button class="course-btn" data-lesson="3" onclick="toggleCourse(this,2)">Unit 3</button>
+        <button class="course-btn" data-lesson="4" onclick="toggleCourse(this,2)">Unit 4</button>
+        <button class="course-btn" data-lesson="5" onclick="toggleCourse(this,2)">Unit 5</button>
+        <button class="course-btn" data-lesson="6" onclick="toggleCourse(this,2)">Unit 6</button>
+        <button class="course-btn" data-lesson="7" onclick="toggleCourse(this,2)">Unit 7</button>
+        <button class="course-btn" data-lesson="8" onclick="toggleCourse(this,2)">Unit 8</button>
+        <button class="course-btn" data-lesson="9" onclick="toggleCourse(this,2)">Unit 9</button>
+    </div>
+    <hr style="margin: 30px auto; width: 95%; border: 1px solid #2f0b70;">
+
+    <p>
+        <button class="course-btn-a" onclick="toggleSelectAllCourses()">Select All</button>
+        <button class="course-btn-a" onclick="confirmCourses()">Start</button>
+    </p>
+    
+</div>
+
+<!-- Step 2: choose mode -->
+<div class="start-buttons hidden" id="start-buttons">
     <h2>英翻中練習 30 題</h2>
     <button onclick="startGame(30, 'en-to-zh')">Start</button>
 
@@ -35,31 +76,22 @@
 
     <h2>中翻英練習 30 題</h2>
     <button onclick="startGame(30, 'zh-to-en')">Start</button>
-  </div>
+</div>
 
-  <!-- Step 3: quiz -->
-  <div class="quiz-box hidden" id="quiz-box">
-    <h2 id="section-title">單字：（選正確的）</h2> 
+<!-- Step 3: quiz -->
+<div class="quiz-box hidden" id="quiz-box">
+    <h2 id="section-title">選正確的單字</h2> 
     <div class="word" id="word">Loading...</div>
     <div id="options"></div>
     <button id="next-btn" onclick="nextQuestion()">下一題</button>
     <div id="score-box"></div>
-  </div>
+</div>
 
-  <div id="footer-bar">
+<div id="footer-bar">
     <button id="back-button" onclick="goBack()">回首頁</button>
-  </div>
+</div>
 
-  <script>
-    function selectRole(element, role) {
-      // Add click animation
-      element.classList.add("clicked");
+<script src="english_character.js" defer></script>
 
-      // Go to the next step after 0.6 seconds
-      setTimeout(() => {
-        chooseRole(role);
-      }, 600);
-    }
-  </script>
 </body>
 </html>
