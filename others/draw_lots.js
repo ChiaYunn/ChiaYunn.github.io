@@ -137,3 +137,8 @@ function clearStats(){
 // initialization
 renderStats();
 createSparkles();
+
+
+function goBack(){
+    window.location.href="front_page.html";
+}
