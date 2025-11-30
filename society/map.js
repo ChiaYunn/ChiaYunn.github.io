@@ -37,3 +37,7 @@ document.querySelectorAll('path').forEach(path => {
     }
   });
 });
+
+function goBack(){
+    window.location.href="https://ChiaYunn.github.io/front_page.html";
+}

@@ -134,11 +134,12 @@ function clearStats(){
     }
 }
 
+
 // initialization
 renderStats();
 createSparkles();
 
 
 function goBack(){
-    window.location.href="front_page.html";
+    window.location.href="https://ChiaYunn.github.io/front_page.html";
 }
